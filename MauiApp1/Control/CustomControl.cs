@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MauiApp1
 {
-    public class Container : CustomLayout
+    public class CustomGrid : CustomLayout
     {
 
         protected override ILayoutManager CreateLayoutManager()
@@ -45,7 +45,7 @@ namespace MauiApp1
         {
             if (this.Children.Count == 0)
                 for (int i = 0; i < 10; i++)
-                    this.Children.Add(new Row() { RowIndex = i, Container = this });
+                    this.Children.Add(new Row() { RowIndex = i, customGrid = this });
 
             foreach (var row in this.Children)
                 (row as IView)!.Measure(TotalWidth, 50);
@@ -92,7 +92,7 @@ namespace MauiApp1
             return new CustomLayoutManager(this);
         }
         internal int RowIndex;
-        public Container? Container;
+        public CustomGrid? customGrid;
 
 
         internal override Size MeasureChildren(double widthConstraint, double heightConstraint)
@@ -124,7 +124,7 @@ namespace MauiApp1
             if (cell.CellIndex < 0)
                 return;
 
-            double xPosition = this.Container!.ScrollX;
+            double xPosition = this.customGrid!.ScrollX;
             int viewStartIndex = (int)(xPosition / 120);
             int viewEndIndex = (int)((xPosition + 500) / 120);
 

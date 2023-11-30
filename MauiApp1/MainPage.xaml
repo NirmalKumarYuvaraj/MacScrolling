@@ -6,7 +6,7 @@
 
     <StackLayout WidthRequest="500">        
     <ScrollView x:Name="scrollView" Orientation="Both">        
-        <local:Container x:Name="container"  />
+        <local:CustomGrid x:Name="container"  />
     </ScrollView>
     </StackLayout>
 </ContentPage>
